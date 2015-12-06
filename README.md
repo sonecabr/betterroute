@@ -87,10 +87,50 @@ Opção 2 (via maven): execute na pasta principal do projeto ` mvn clean install
     }
 ]
 `
+Onde:
+
+"name": "Apelido do ponto" ,
+"neighbor": "Apelido do ponto vizinho",
+"distance": "Distancia entre o ponto e o ponto vizinho",
+"parentName": "Dominio"
+
+Retorno esperado:
+
+HttpStatus 200
+`
+[
+    {
+        "id": 1,
+        "name": "F",
+        "neighbor": "G",
+        "distance": 15,
+        "parentName": "São Paulo"
+    },
+    {
+        "id": 2,
+        "name": "G",
+        "neighbor": "H",
+        "distance": 15,
+        "parentName": "São Paulo"
+    }
+]
+`
 
 1.2 - Adicionar/atualizar uma rota
 
 `PUT http://localhost:8080/wm-api-1.0-SNAPSHOT/route
+{
+    "name": "F",
+    "neighbor": "G",
+    "distance": 15,
+    "parentName": "São Paulo"
+}
+`
+Retorno esperado:
+
+HttpStatus 200
+
+`
 {
     "name": "F",
     "neighbor": "G",
@@ -110,9 +150,48 @@ Para atualizar é necessário informar o id retornado no cadastro
     "parentName": "São Paulo"
 }
 `
+
+Retorno esperado:
+
+HttpStatus 200
+
+`PUT http://localhost:8080/wm-api-1.0-SNAPSHOT/route
+{
+    "id":1,
+    "name": "F",
+    "neighbor": "G",
+    "distance": 15,
+    "parentName": "São Paulo"
+}
+`
+
 2 - Listando as rotas por dominio
 
 `GET http://localhost:8080/wm-api-1.0-SNAPSHOT/route/list/São Paulo`
+
+Retorno esperado:
+
+
+HttpStatus 200
+`
+[
+    {
+        "id": 1,
+        "name": "F",
+        "neighbor": "G",
+        "distance": 15,
+        "parentName": "São Paulo"
+    },
+    {
+        "id": 2,
+        "name": "G",
+        "neighbor": "H",
+        "distance": 15,
+        "parentName": "São Paulo"
+    }
+]
+`
+
 
 3 - Encontrando a melhor rota
 
@@ -125,6 +204,44 @@ Para atualizar é necessário informar o id retornado no cadastro
     "gasCost":2.5
 }
 `
+
+Onde:
+
+"parentName":"Dominio"
+"start":"Apelido do ponto de inicio"
+"end":"Apelido do ponto alvo"
+"autonomy": autonomia do veiculo em litros por km
+"gasCost": custo do combustivel por litro
+
+Retorno esperado:
+
+`
+{
+  "parentName": "São Paulo",
+  "start": "A",
+  "end": "D",
+  "autonomy": 10,
+  "gasCost": 2.5,
+  "bestRoute": [
+    "A->B->D"
+  ],
+  "totalCost": 6.25,
+  "message": null
+}
+`
+
+Onde:
+
+
+"parentName": "Dominio",
+"start": "Apelido do ponto de inicio",
+"end": "Apelido do ponto alvo",
+"autonomy": autonomia do veiculo em litros por km,
+"gasCost": custo do combustivel por litro,
+"bestRoute": "lista de rotas possiveis com o melhor custo"
+"totalCost": "total do custo da viagem",
+"message": "preenchida em caso de erro"
+
 
 ## Dúvidas?
 `devel.andrerocha@gmail.com`
