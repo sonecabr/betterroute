@@ -109,8 +109,7 @@ Para atualizar é necessário informar o id retornado no cadastro
 
 3 - Encontrando a melhor rota
 
-`POST http://localhost:8080/wm-api-1.0-SNAPSHOT/route/best
-
+`POST http://localhost:8080/wm-api-1.0-SNAPSHOT/route/best\n
 {
     "parentName":"São Paulo",
     "start":"A",
