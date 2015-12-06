@@ -44,6 +44,11 @@ Mysql (yum install mysql ou [Mysql Download] (http://dev.mysql.com/get/Downloads
 
 2.1 - Copie o arquivo `resources/wildfly-9.0.2.Final/standalone/configuration/wmtest.xml` para `${wildfly.home}/standalone/configuration/`
 
+3 - Configure a batabase e a tabela (Necessario ter grant de DDL)
+`mysql -u ${userDoMysql} -p${senhaDoMysql}`
+`create database wmtest`
+`create table route(id int(11) not null primary key auto_increment, name varchar(100) not null, parentname varchar(100) not null, neighbor varchar(100) not null, distance double not null) engine=InnoDb;`
+
 ## Rodando o Jboss
 
 `sh ${wildfly.home}/bin/standalone.sh -c wmtest.xml -b 0.0.0.0 -bmanagement 0.0.0.0`
