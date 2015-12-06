@@ -23,10 +23,12 @@ Vale considerar que esta arquitetura é apenas de escopo simples e não atende a
 
 Não me preocupei em criar uma camada de sec por não ter insumos deste requisito
 
+Foi usado Java7 ao inves do Java8 para possibilitar a integração com o travis-ci
+
 
 ## Pre requisitos
 
-Java 8 [Java 8](https://www.java.com/pt_BR/download/)
+Java 7 [Java 8](https://www.java.com/pt_BR/download/)
 
 Wildfly9 [Wildfly8 Download](http://download.jboss.org/wildfly/9.0.2.Final/wildfly-9.0.2.Final.tar.gz)
 
@@ -109,7 +111,7 @@ Para atualizar é necessário informar o id retornado no cadastro
 
 3 - Encontrando a melhor rota
 
-`POST http://localhost:8080/wm-api-1.0-SNAPSHOT/route/best\n
+`POST http://localhost:8080/wm-api-1.0-SNAPSHOT/route/best
 {
     "parentName":"São Paulo",
     "start":"A",
