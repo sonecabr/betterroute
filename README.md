@@ -28,7 +28,7 @@ Foi usado Java7 ao inves do Java8 para possibilitar a integração com o travis-
 
 ## Pre requisitos
 
-Java 7 [Java 8](https://www.java.com/pt_BR/download/)
+Java 7 [Java 7](https://www.java.com/pt_BR/download/)
 
 Wildfly9 [Wildfly8 Download](http://download.jboss.org/wildfly/9.0.2.Final/wildfly-9.0.2.Final.tar.gz)
 
