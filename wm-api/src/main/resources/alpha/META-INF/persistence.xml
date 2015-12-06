@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+
+    <persistence-unit name="wmtest" transaction-type="JTA">
+
+        <class>com.soneca.wmtest.core.entity.Route</class>
+
+        <!-- Query -->
+        <jta-data-source>java:jboss/jdbc/wmtestXADS</jta-data-source>
+        <!-- Transacional -->
+        <non-jta-data-source>java:jboss/jdbc/wmtestDS</non-jta-data-source>
+        <!-- propriedades -->
+        <properties>
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.show_sql"
+                      value="true"/>
+            <property name="hibernate.connection.charSet"
+                      value="UTF-8"/>
+            <property name="hibernate.generate_statistics"
+                      value="true"/>
+            <property name="hibernate.archive.autodetection"
+                      value="class, hbm"/>
+        </properties>
+    </persistence-unit>
+</persistence>
