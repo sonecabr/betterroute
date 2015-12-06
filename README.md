@@ -1,4 +1,4 @@
-![WmTest](grapHA.gif?raw=true)
+![WmTest](resources/graphA.gif?raw=true)
 
 ![Build Status](https://travis-ci.org/sonecabr/betterroute.svg?branch=master)
 
