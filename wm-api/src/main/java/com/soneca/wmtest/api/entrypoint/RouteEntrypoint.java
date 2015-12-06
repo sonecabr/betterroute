@@ -26,8 +26,13 @@ public class RouteEntrypoint {
     private Logger LOG = LoggerFactory.getLogger(RouteEntrypoint.class);
 
 
+    /**
+     * Add a Route to repository
+     * @param route
+     * @return Route
+     */
     @PUT
-    public Route post(Route route){
+    public Route add(Route route){
         try {
             route = business.addRoute(route);
             return route;
@@ -37,6 +42,30 @@ public class RouteEntrypoint {
         return null;
     }
 
+    /**
+     * Add multiple routes to repository
+     * @param routes
+     * @return List<Route>
+     */
+    @PUT
+    @Path("/_bulk")
+    public List<Route> bulk(List<Route> routes){
+        try {
+            for(Route route : routes){
+                route = business.addRoute(route);
+            }
+            return routes;
+        } catch (WmBusinessException e) {
+            LOG.error(e.getMessage());
+        }
+        return null;
+    }
+
+    /**
+     * List all routes based on parentName
+     * @param parentName
+     * @return List<Route>
+     */
     @GET
     @Path("/list/{parentName}")
     public List<Route> list(
@@ -51,6 +80,11 @@ public class RouteEntrypoint {
 
     }
 
+    /**
+     * Get a route from repository
+     * @param id
+     * @return Route
+     */
     @GET
     @Path("/{id}")
     public Route get(@PathParam("id") Long id){
