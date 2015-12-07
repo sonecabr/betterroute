@@ -51,7 +51,10 @@ Mysql (yum install mysql ou [Mysql Download] (http://dev.mysql.com/get/Downloads
 
 ## Rodando o Jboss
 
-`sh ${wildfly.home}/bin/standalone.sh -c wmtest.xml -b 0.0.0.0 -bmanagement 0.0.0.0`
+`sh ${wildfly.home}/bin/standalone.sh -c wmtest.xml -b 0.0.0.0 -bmanagement 0.0.0.0 -Dmysqluser=root -Dmysqlpass=root`
+
+* Altere o usuario e senha do mysql com os parametros mysqluser e mysqlpass
+
 
 ## Aplicando o deploy
 
@@ -63,7 +66,10 @@ Opção 2 (via maven): execute na pasta principal do projeto ` mvn clean install
 
 `GET http://localhost:8080/wm-api-1.0-SNAPSHOT/probe`
 
-* O retorno esperado é `{"status": "OK"}`
+* O retorno esperado é
+```json
+{"status": "OK"}
+```
 
 ## Consumindo a api
 
@@ -71,7 +77,8 @@ Opção 2 (via maven): execute na pasta principal do projeto ` mvn clean install
 
 1.1 - Adicinar n rotas
 
-`PUT http://localhost:8080/wm-api-1.0-SNAPSHOT/route/_bulk
+`PUT http://localhost:8080/wm-api-1.0-SNAPSHOT/route/_bulk`
+```json
 [
     {
         "name": "F",
@@ -86,7 +93,7 @@ Opção 2 (via maven): execute na pasta principal do projeto ` mvn clean install
         "parentName": "São Paulo"
     }
 ]
-`
+```
 Onde:
 
 "name": "Apelido do ponto" ,
@@ -97,7 +104,7 @@ Onde:
 Retorno esperado:
 
 HttpStatus 200
-`
+```json
 [
     {
         "id": 1,
@@ -114,34 +121,36 @@ HttpStatus 200
         "parentName": "São Paulo"
     }
 ]
-`
+```
 
 1.2 - Adicionar/atualizar uma rota
 
-`PUT http://localhost:8080/wm-api-1.0-SNAPSHOT/route
+`PUT http://localhost:8080/wm-api-1.0-SNAPSHOT/route`
+```json
 {
     "name": "F",
     "neighbor": "G",
     "distance": 15,
     "parentName": "São Paulo"
 }
-`
+```
 Retorno esperado:
 
 HttpStatus 200
 
-`
+```json
 {
     "name": "F",
     "neighbor": "G",
     "distance": 15,
     "parentName": "São Paulo"
 }
-`
+```
 
 Para atualizar é necessário informar o id retornado no cadastro
 
-`PUT http://localhost:8080/wm-api-1.0-SNAPSHOT/route
+`PUT http://localhost:8080/wm-api-1.0-SNAPSHOT/route`
+```json
 {
     "id":1,
     "name": "F",
@@ -149,13 +158,14 @@ Para atualizar é necessário informar o id retornado no cadastro
     "distance": 15,
     "parentName": "São Paulo"
 }
-`
+```
 
 Retorno esperado:
 
 HttpStatus 200
 
-`PUT http://localhost:8080/wm-api-1.0-SNAPSHOT/route
+`PUT http://localhost:8080/wm-api-1.0-SNAPSHOT/route`
+```json
 {
     "id":1,
     "name": "F",
@@ -163,7 +173,7 @@ HttpStatus 200
     "distance": 15,
     "parentName": "São Paulo"
 }
-`
+```
 
 2 - Listando as rotas por dominio
 
@@ -173,7 +183,7 @@ Retorno esperado:
 
 
 HttpStatus 200
-`
+```json
 [
     {
         "id": 1,
@@ -190,12 +200,13 @@ HttpStatus 200
         "parentName": "São Paulo"
     }
 ]
-`
+```
 
 
 3 - Encontrando a melhor rota
 
-`POST http://localhost:8080/wm-api-1.0-SNAPSHOT/route/best
+`POST http://localhost:8080/wm-api-1.0-SNAPSHOT/route/best`
+```json
 {
     "parentName":"São Paulo",
     "start":"A",
@@ -203,7 +214,7 @@ HttpStatus 200
     "autonomy":10,
     "gasCost":2.5
 }
-`
+```
 
 Onde:
 
@@ -215,7 +226,7 @@ Onde:
 
 Retorno esperado:
 
-`
+```json
 {
   "parentName": "São Paulo",
   "start": "A",
@@ -228,7 +239,7 @@ Retorno esperado:
   "totalCost": 6.25,
   "message": null
 }
-`
+```
 
 Onde:
 

@@ -160,8 +160,8 @@
                         <prefill>true</prefill>
                     </pool>
                     <security>
-                        <user-name>root</user-name>
-                        <password>root</password>
+                        <user-name>${mysqluser}</user-name>
+                        <password>${mysqlpass}</password>
                     </security>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
@@ -182,8 +182,8 @@
                     <driver>mysql</driver>
                     <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
                     <security>
-                        <user-name>root</user-name>
-                        <password>root</password>
+                        <user-name>${mysqluser}</user-name>
+                        <password>${mysqlpass}</password>
                     </security>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
