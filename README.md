@@ -96,9 +96,12 @@ Opção 2 (via maven): execute na pasta principal do projeto ` mvn clean install
 ```
 Onde:
 
-"name": "Apelido do ponto" ,
+"name": "Apelido do ponto",
+
 "neighbor": "Apelido do ponto vizinho",
+
 "distance": "Distancia entre o ponto e o ponto vizinho",
+
 "parentName": "Dominio"
 
 Retorno esperado:
@@ -218,11 +221,16 @@ HttpStatus 200
 
 Onde:
 
-"parentName":"Dominio"
-"start":"Apelido do ponto de inicio"
-"end":"Apelido do ponto alvo"
-"autonomy": autonomia do veiculo em litros por km
-"gasCost": custo do combustivel por litro
+"parentName":"Dominio",
+
+"start":"Apelido do ponto de inicio",
+
+"end":"Apelido do ponto alvo",
+
+"autonomy": autonomia do veiculo em litros por km,
+
+"gasCost": custo do combustivel por litro,
+
 
 Retorno esperado:
 
@@ -245,12 +253,19 @@ Onde:
 
 
 "parentName": "Dominio",
+
 "start": "Apelido do ponto de inicio",
+
 "end": "Apelido do ponto alvo",
+
 "autonomy": autonomia do veiculo em litros por km,
+
 "gasCost": custo do combustivel por litro,
-"bestRoute": "lista de rotas possiveis com o melhor custo"
+
+"bestRoute": "lista de rotas possiveis com o melhor custo",
+
 "totalCost": "total do custo da viagem",
+
 "message": "preenchida em caso de erro"
 
 
